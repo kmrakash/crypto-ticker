@@ -15,4 +15,7 @@
   color: white;
 }
 
-
+.Container{
+  display: flex;
+  justify-content:space-evenly;
+}

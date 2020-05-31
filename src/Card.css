@@ -1,0 +1,20 @@
+.Card{
+    margin-top:10px;
+    padding: 20px;
+   border: 1px solid green; 
+    
+}
+
+ul{
+    list-style-type:none
+}
+
+ul li{
+    margin: 5px 0;
+}
+
+.Price{
+    font-size:1.5em;
+    font-weight:bold;
+    
+}

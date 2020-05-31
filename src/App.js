@@ -1,5 +1,6 @@
 import React, { useState , useEffect } from 'react';
 import './App.css';
+import Ticker from './Ticker';
 
 function App() {
 const [subcription, setSubscription] = useState({
@@ -24,11 +25,11 @@ const initWebSocket = () => {
   ws.onmessage = (event) => {
     const response = JSON.parse(event.data);
     if(response.product_id === 'BTC-USD')
-      setBtcPrice(response.price);
+      setBtcPrice(response);
       if(response.product_id === 'ETH-USD')
-      setEthPrice(response.price);
+      setEthPrice(response);
       if(response.product_id === 'LTC-USD')
-      setLtcPrice(response.price);
+      setLtcPrice(response);
     
   }
 
@@ -50,10 +51,11 @@ useEffect(()=>{
     <div className="App-header">
       <h1>Cryptocurrency Ticker</h1>
     </div>
-      <h1>Bitcoin Price: ${btcPrice}</h1>
-      <h1>Litecoin Price: ${ltcPrice}</h1>
-      <h1>Ethereum Price: ${ethPrice}</h1>
-
+      <div className="Container">
+        <Ticker name="BitCoins"  {...btcPrice}/>
+        <Ticker name="LiteCoins"  {...ltcPrice} />
+        <Ticker name="EthereumCoins"  {...ethPrice} /> 
+      </div>
     </div>
   );
 }
