@@ -1,12 +1,13 @@
 import React from 'react';
 import './Card.css';
-import { Card, CardContent, Typography } from "@material-ui/core";
+import {Grid ,Card, CardContent, Typography } from "@material-ui/core";
+
 const Ticker = ({name,product_id ,best_ask , best_bid, high_24h, low_24h, open_24h, price}) =>{
     
     return (
-        <Card className="Card">
+        <Grid item component={Card}  xs={12} md={3}>
         <CardContent>
-        <Typography variant="h3">{name}:({product_id})</Typography>
+        <Typography variant="h4">{name}:({product_id})</Typography>
             
             <ul>
                 <li className="Price">Price: ${price}</li>
@@ -17,7 +18,7 @@ const Ticker = ({name,product_id ,best_ask , best_bid, high_24h, low_24h, open_2
                 <li>Open 24h:  {open_24h}</li>
             </ul>
         </CardContent>
-        </Card>
+        </Grid>
         
     );
 }

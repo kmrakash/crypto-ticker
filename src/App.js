@@ -1,6 +1,7 @@
 import React, { useState , useEffect } from 'react';
 import './App.css';
 import Ticker from './Ticker';
+import { Grid } from "@material-ui/core";
 
 function App() {
 const [subcription, setSubscription] = useState({
@@ -24,6 +25,7 @@ const initWebSocket = () => {
 
   ws.onmessage = (event) => {
     const response = JSON.parse(event.data);
+    console.log(response);
     if(response.product_id === 'BTC-USD')
       setBtcPrice(response);
       if(response.product_id === 'ETH-USD')
@@ -43,7 +45,9 @@ useEffect(()=>{
 });
 
 
-
+console.log(btcPrice);
+console.log(ethPrice);
+console.log(ltcPrice);
 
 
   return (
@@ -51,11 +55,11 @@ useEffect(()=>{
     <div className="App-header">
       <h1>Cryptocurrency Ticker</h1>
     </div>
-      <div className="Container">
+      <Grid container spacing={3} justify="center">
         <Ticker name="BitCoins"  {...btcPrice}/>
         <Ticker name="LiteCoins"  {...ltcPrice} />
         <Ticker name="EthereumCoins"  {...ethPrice} /> 
-      </div>
+      </Grid>
     </div>
   );
 }
